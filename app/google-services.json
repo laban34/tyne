@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "124536965787",
+    "project_id": "carbrand-imports-company",
+    "storage_bucket": "carbrand-imports-company.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:124536965787:android:53331c725b81c58503543e",
+        "android_client_info": {
+          "package_name": "com.example.carbrandimportscompany"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA6MR8k7Cm37ccoBtMP4Lw1j4drOMGlXAQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
