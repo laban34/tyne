@@ -1,3 +1,4 @@
+
 package com.example.carbrandimportscompany.ui.theme.screens.home
 
 import android.content.Intent
@@ -23,7 +24,11 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.carbrandimportscompany.R
-import com.example.carbrandimportscompany.navigation.ROUTE_ADD_PRODUCT
+//import com.example.carbrandimportscompany.navigation.ROUTE_ADD_PRODUCT
+//import com.example.carbrandimportscompany.navigation.ROUTE_CAR_BRANDS
+//import com.example.carbrandimportscompany.navigation.ROUTE_ORDERS
+//import com.example.carbrandimportscompany.navigation.ROUTE_PAYMENTS
+//import com.example.carbrandimportscompany.navigation.ROUTE_SETTINGS
 import com.google.firebase.auth.FirebaseAuth
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -94,7 +99,7 @@ fun DashboardScreen(navController: NavController) {
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 CenterAlignedTopAppBar(
-                    title = { Text(text = "Myme", color = Color.Yellow) },
+                    title = { Text(text = " Order yous now", color = Color.White) },
                     navigationIcon = {
                         IconButton(onClick = { /* Home click logic */ }) {
                             Icon(imageVector = Icons.Filled.Home, contentDescription = "Home", tint = Color.White)
@@ -123,13 +128,20 @@ fun DashboardScreen(navController: NavController) {
 
                 Spacer(modifier = Modifier.height(16.dp))
 
-                Row(modifier = Modifier.wrapContentWidth()) {
-                    DashboardCard("Products", navController)
-                    DashboardCard("Orders", navController)
-                    DashboardCard("Payments", navController)
-                }
+
+//                Row(modifier = Modifier.wrapContentWidth()) {
+//                    DashboardCard("Car Brands", navController, route = ROUTE_CAR_BRANDS)
+//                    DashboardCard("Orders", navController, route = ROUTE_ORDERS)
+//                    DashboardCard("Payments", navController, route = ROUTE_PAYMENTS)
+//                    DashboardCard("Offers", navController) // No route – static card
+//                    DashboardCard("Settings", navController, route = ROUTE_SETTINGS)
+//                    DashboardCard("Services", navController) // No route – static card
+//                }
 
                 Row(modifier = Modifier.wrapContentWidth()) {
+                    DashboardCard("Car Brands", navController)
+                    DashboardCard("Orders", navController)
+                    DashboardCard("Payments", navController)
                     DashboardCard("Offers", navController)
                     DashboardCard("Settings", navController)
                     DashboardCard("Services", navController)
@@ -139,17 +151,28 @@ fun DashboardScreen(navController: NavController) {
     }
 }
 
+
 @Composable
-fun DashboardCard(title: String, navController: NavController) {
-    Card(
-        modifier = Modifier
+fun DashboardCard(
+    title: String,
+    navController: NavController,
+    route: String? = null // Make route optional
+) {
+    val modifier = if (route != null) {
+        Modifier
             .padding(10.dp)
             .clickable {
-                navController.navigate(ROUTE_ADD_PRODUCT)
-            },
+                navController.navigate(route)
+            }
+    } else {
+        Modifier.padding(10.dp) // No clickable modifier
+    }
+
+    Card(
+        modifier = modifier,
         shape = RoundedCornerShape(20.dp),
         elevation = CardDefaults.cardElevation(10.dp),
-        colors = CardDefaults.cardColors(Color.LightGray)
+        colors = CardDefaults.cardColors(Color.Blue)
     ) {
         Box(
             modifier = Modifier
@@ -157,10 +180,34 @@ fun DashboardCard(title: String, navController: NavController) {
                 .padding(25.dp),
             contentAlignment = Alignment.Center
         ) {
-            Text(text = title)
+            Text(text = title, color = Color.White)
         }
     }
 }
+
+
+//@Composable
+//fun DashboardCard(title: String, navController: NavController) {
+//    Card(
+//        modifier = Modifier
+//            .padding(10.dp)
+//            .clickable {
+//                navController.navigate(ROUTE_ADD_PRODUCT)
+//            },
+//        shape = RoundedCornerShape(20.dp),
+//        elevation = CardDefaults.cardElevation(10.dp),
+//        colors = CardDefaults.cardColors(Color.Blue)
+//    ) {
+//        Box(
+//            modifier = Modifier
+//                .height(80.dp)
+//                .padding(25.dp),
+//            contentAlignment = Alignment.Center
+//        ) {
+//            Text(text = title)
+//        }
+//    }
+//}
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable

@@ -19,6 +19,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import coil.compose.AsyncImage
@@ -32,8 +33,10 @@ fun ViewCarBrandsScreen(navController: NavHostController) {
     val carViewModel = CarViewModel()
     val emptyCarState = remember { mutableStateOf(CarModel("", "", "", "", "", "")) }
     val carBrandList = remember { mutableStateListOf<CarModel>() }
+    val cars = carViewModel.fetchCars(emptyCarState, carBrandList, context)
 
-    val cars = carViewModel.viewProducts(emptyCarState, carBrandList, context)
+
+//    val cars = carViewModel.viewModelScope(emptyCarState, carBrandList, context)
 
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -50,17 +53,18 @@ fun ViewCarBrandsScreen(navController: NavHostController) {
         LazyColumn {
             items(cars.size) { index ->
                 CarBrandItem(
-                    brand = cars[index].name,
-                    model = cars[index].gender,
-                    origin = cars[index].course,
-                    description = cars[index].desc,
-                    carId = cars[index].studentId,
+                    brand = cars[index].brandName,
+                    model = cars[index].model,
+                    origin = cars[index].modelYear,
+                    description = cars[index].description,
+                    carId = cars[index].carId,
                     imageUrl = cars[index].imageUrl,
                     navController = navController,
                     carViewModel = carViewModel
                 )
             }
         }
+
     }
 }
 
@@ -98,7 +102,7 @@ fun CarBrandItem(
                 Row(horizontalArrangement = Arrangement.SpaceBetween) {
                     Button(
                         onClick = {
-                            carViewModel.deleteStudent(context, carId, navController)
+                            carViewModel.deleteCar(context, carId, navController)
                         },
                         shape = RoundedCornerShape(10.dp),
                         colors = ButtonDefaults.buttonColors(Color.Red)

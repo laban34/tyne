@@ -8,3 +8,14 @@ data class CarModel(
     var imageUrl: String = "",      // URL to the uploaded image
     var carId: String = ""          // Unique identifier
 )
+data class ServiceProvider(
+    val name: String,
+    val contact: String,
+    val role: String
+)
+
+data class Service(
+    val title: String,
+    val description: String,
+    val providers: List<ServiceProvider>
+)

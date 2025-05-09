@@ -1,9 +1,5 @@
 package com.example.carbrandimportscompany.models
 
-//class UserModels {
-//}
-
-
 data class UserModel(
     var firstname: String = "",
     var lastname: String = "",

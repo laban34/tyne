@@ -30,7 +30,7 @@ fun SplashScreen(onNavigationToNext : () -> Unit) {
     Box(
         modifier = Modifier
             .fillMaxSize() // Ensures Box takes up the entire screen
-            .background(Color.Red), // Set background to white
+            .background(Color.Transparent), // Set background to white
         contentAlignment = Alignment.Center
     ) {
         Column(
@@ -39,12 +39,12 @@ fun SplashScreen(onNavigationToNext : () -> Unit) {
             verticalArrangement = Arrangement.Center // Centers content vertically
         ) {
             Image(
-                painter = painterResource(id = R.drawable.logo),
+                painter = painterResource(id = R.drawable.background),
                 contentDescription = "App logo",
                 modifier = Modifier.size(300.dp)
             )
             Text(
-                text = "Welcome to Peridah's Saves Company",
+                text = "Welcome to CarBrand import Company",
                 color = Color.Black // Set text color to black for contrast
             )
         }

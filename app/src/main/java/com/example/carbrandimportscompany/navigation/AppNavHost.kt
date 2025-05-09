@@ -1,3 +1,5 @@
+
+
 package com.example.carbrandimportscompany.navigation
 
 
@@ -9,9 +11,11 @@ import androidx.navigation.compose.rememberNavController
 import com.example.carbrandimportscompany.ui.theme.screens.SplashScreen
 import com.example.carbrandimportscompany.ui.theme.screens.carbrands.AddCarScreen
 import com.example.carbrandimportscompany.ui.theme.screens.carbrands.UpdateCarScreen
-import com.example.carbrandimportscompany.ui.theme.screens.carbrands.ViewCarBrandsPreview
+
 import com.example.carbrandimportscompany.ui.theme.screens.carbrands.ViewCarBrandsScreen
 import com.example.carbrandimportscompany.ui.theme.screens.home.DashboardScreen
+
+
 import com.example.carbrandimportscompany.ui.theme.screens.login.LoginScreen
 import com.example.carbrandimportscompany.ui.theme.screens.register.RegisterScreen
 
@@ -27,9 +31,17 @@ fun AppNavHost(navController: NavHostController = rememberNavController(), start
         composable(ROUTE_HOME){ DashboardScreen(navController) }
         composable(ROUTE_ADD_PRODUCT){ AddCarScreen(navController) }
         composable(ROUTE_VIEW_CARS){ ViewCarBrandsScreen( navController) }
-        composable("$ROUTE_UPDATE_PRODUCT/{studentId}") {
+
+
+//        composable("car_brands") { CarBrandsScreen(navController) }
+//        composable("orders") { OrdersScreen(navController) }
+//        composable("payments") { PaymentsScreen(navController) }
+//        composable("settings") { SettingsScreen(navController) }
+//
+
+        composable("$ROUTE_UPDATE_PRODUCT/{carId}") {
                 passedData -> UpdateCarScreen(
-            navController, passedData.arguments?.getString("studentId")!! )
+            navController, passedData.arguments?.getString("carId")!! )
         }
 
     }
