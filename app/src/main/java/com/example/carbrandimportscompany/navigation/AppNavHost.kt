@@ -10,10 +10,12 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.carbrandimportscompany.ui.theme.screens.SplashScreen
 import com.example.carbrandimportscompany.ui.theme.screens.carbrands.AddCarScreen
+import com.example.carbrandimportscompany.ui.theme.screens.carbrands.ProductScreen
 import com.example.carbrandimportscompany.ui.theme.screens.carbrands.UpdateCarScreen
 
 import com.example.carbrandimportscompany.ui.theme.screens.carbrands.ViewCarBrandsScreen
 import com.example.carbrandimportscompany.ui.theme.screens.home.DashboardScreen
+import com.example.carbrandimportscompany.ui.theme.screens.home.ServicesScreen
 
 
 import com.example.carbrandimportscompany.ui.theme.screens.login.LoginScreen
@@ -31,6 +33,8 @@ fun AppNavHost(navController: NavHostController = rememberNavController(), start
         composable(ROUTE_HOME){ DashboardScreen(navController) }
         composable(ROUTE_ADD_PRODUCT){ AddCarScreen(navController) }
         composable(ROUTE_VIEW_CARS){ ViewCarBrandsScreen( navController) }
+        composable(ROUTE_SERVICES){ ServicesScreen(navController) }
+        composable(ROUTE_PRODUCTS){ ProductScreen(navController) }
 
 
 //        composable("car_brands") { CarBrandsScreen(navController) }
